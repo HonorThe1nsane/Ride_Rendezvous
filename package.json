@@ -26,10 +26,8 @@
     "decompress-response": "^8.1.0",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
-    "fsevents": "^2.3.2",
     "get-intrinsic": "^1.2.1",
     "get-stream": "^7.0.0",
-    "glob-parent": "^5.1.2",
     "got": "^13.0.0",
     "has-proto": "^1.0.1",
     "has-symbols": "^1.0.3",
@@ -45,7 +43,6 @@
     "quick-lru": "^6.1.1",
     "responselike": "^3.0.0",
     "safe-buffer": "^5.2.1",
-    "semver": "^7.5.3",
     "side-channel": "^1.0.4",
     "swagger-ui-express": "^4.6.3"
   }
