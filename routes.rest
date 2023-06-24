@@ -1,0 +1,5 @@
+GET http://localhost:8080/home
+
+###
+
+GET https://riderendezvous.onrender.com/home
