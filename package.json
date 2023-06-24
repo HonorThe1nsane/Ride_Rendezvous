@@ -15,6 +15,9 @@
     "url": "https://github.com/HonorThe1nsane/Ride_Rendezvous/issues"
   },
   "homepage": "https://github.com/HonorThe1nsane/Ride_Rendezvous#readme",
+  "engines": {
+    "node": ">=16"
+  },
   "dependencies": {
     "@sindresorhus/is": "^5.4.1",
     "async-each": "^1.0.6",
