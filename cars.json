@@ -1,0 +1,10 @@
+{
+    "car": {
+        "carMake": "Ford",
+        "carModel": "Mustang",
+        "engineSize": "170 cu in (2.8 L)",
+        "color": "black",
+        "year": "1966",
+        "price": "26000"
+    }
+}
