@@ -24,9 +24,9 @@
                 "responses": {}
             }
         },
-        "/cars/": {
+        "/clubs": {
             "get": {
-                "description": "",
+                "description": "Get all clubs",
                 "parameters": [
                     {
                         "name": "apiKey",
@@ -51,7 +51,7 @@
                 ]
             },
             "post": {
-                "description": "",
+                "description": "Create a new club",
                 "parameters": [
                     {
                         "name": "apiKey",
@@ -64,23 +64,25 @@
                         "schema": {
                             "type": "object",
                             "properties": {
-                                "carMake": {
-                                    "example": "any"
+                                "name": {
+                                    "type": "string",
+                                    "example": "Club Name"
                                 },
-                                "carModel": {
-                                    "example": "any"
+                                "location": {
+                                    "type": "string",
+                                    "example": "Club Location"
                                 },
-                                "engineSize": {
-                                    "example": "any"
+                                "president": {
+                                    "type": "string",
+                                    "example": "Club President"
                                 },
-                                "color": {
-                                    "example": "any"
+                                "clubMembers": {
+                                    "type": "string",
+                                    "example": "Club Members"
                                 },
-                                "year": {
-                                    "example": "any"
-                                },
-                                "price": {
-                                    "example": "any"
+                                "organizer": {
+                                    "type": "string",
+                                    "example": "Club Organizer"
                                 }
                             }
                         }
@@ -106,17 +108,19 @@
                 ]
             }
         },
-        "/cars/{id}": {
+        "/clubs/{id}": {
             "get": {
-                "description": "",
-                "produces": [
-                    "application/json"
-                ],
+                "description": "Get a specific club by ID",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
                         "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "apiKey",
+                        "in": "header",
                         "type": "string"
                     }
                 ],
@@ -134,7 +138,7 @@
                 ]
             },
             "put": {
-                "description": "",
+                "description": "Update a specific club",
                 "parameters": [
                     {
                         "name": "id",
@@ -143,28 +147,35 @@
                         "type": "string"
                     },
                     {
+                        "name": "apiKey",
+                        "in": "header",
+                        "type": "string"
+                    },
+                    {
                         "name": "body",
                         "in": "body",
                         "schema": {
                             "type": "object",
                             "properties": {
-                                "carMake": {
-                                    "example": "any"
+                                "name": {
+                                    "type": "string",
+                                    "example": "Club Name"
                                 },
-                                "carModel": {
-                                    "example": "any"
+                                "location": {
+                                    "type": "string",
+                                    "example": "Club Location"
                                 },
-                                "engineSize": {
-                                    "example": "any"
+                                "president": {
+                                    "type": "string",
+                                    "example": "Club President"
                                 },
-                                "color": {
-                                    "example": "any"
+                                "clubMembers": {
+                                    "type": "string",
+                                    "example": "Club Members"
                                 },
-                                "year": {
-                                    "example": "any"
-                                },
-                                "price": {
-                                    "example": "any"
+                                "organizer": {
+                                    "type": "string",
+                                    "example": "Club Organizer"
                                 }
                             }
                         }
@@ -180,12 +191,17 @@
                 }
             },
             "delete": {
-                "description": "",
+                "description": "Delete a specific club",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
                         "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "apiKey",
+                        "in": "header",
                         "type": "string"
                     }
                 ],
@@ -199,9 +215,9 @@
                 }
             }
         },
-        "/person/": {
+        "/events": {
             "get": {
-                "description": "",
+                "description": "Get all events",
                 "parameters": [
                     {
                         "name": "apiKey",
@@ -216,28 +232,44 @@
                     "500": {
                         "description": "Internal Server Error"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "oauth2": [
+                            "read"
+                        ]
+                    }
+                ]
             },
             "post": {
-                "description": "POST person",
+                "description": "Create a new event",
                 "parameters": [
+                    {
+                        "name": "apiKey",
+                        "in": "header",
+                        "type": "string"
+                    },
                     {
                         "name": "body",
                         "in": "body",
                         "schema": {
                             "type": "object",
                             "properties": {
-                                "firstName": {
-                                    "example": "any"
+                                "date": {
+                                    "type": "string",
+                                    "example": "Event Date"
                                 },
-                                "lastName": {
-                                    "example": "any"
+                                "time": {
+                                    "type": "string",
+                                    "example": "Event Time"
                                 },
-                                "birthday": {
-                                    "example": "any"
+                                "location": {
+                                    "type": "string",
+                                    "example": "Event Location"
                                 },
-                                "email": {
-                                    "example": "any"
+                                "organizer": {
+                                    "type": "string",
+                                    "example": "Event Organizer"
                                 }
                             }
                         }
@@ -253,15 +285,19 @@
                     "500": {
                         "description": "Internal Server Error"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "oauth2": [
+                            "write"
+                        ]
+                    }
+                ]
             }
         },
-        "/person/{id}": {
+        "/events/{id}": {
             "get": {
-                "description": "",
-                "produces": [
-                    "application/json"
-                ],
+                "description": "Get a specific event by ID",
                 "parameters": [
                     {
                         "name": "id",
@@ -289,7 +325,7 @@
                 ]
             },
             "put": {
-                "description": "",
+                "description": "Update a specific event",
                 "parameters": [
                     {
                         "name": "id",
@@ -308,17 +344,21 @@
                         "schema": {
                             "type": "object",
                             "properties": {
-                                "firstName": {
-                                    "example": "any"
+                                "date": {
+                                    "type": "string",
+                                    "example": "Event Date"
                                 },
-                                "lastName": {
-                                    "example": "any"
+                                "time": {
+                                    "type": "string",
+                                    "example": "Event Time"
                                 },
-                                "birthday": {
-                                    "example": "any"
+                                "location": {
+                                    "type": "string",
+                                    "example": "Event Location"
                                 },
-                                "email": {
-                                    "example": "any"
+                                "organizer": {
+                                    "type": "string",
+                                    "example": "Event Organizer"
                                 }
                             }
                         }
@@ -334,7 +374,7 @@
                 }
             },
             "delete": {
-                "description": "",
+                "description": "Delete a specific event",
                 "parameters": [
                     {
                         "name": "id",
