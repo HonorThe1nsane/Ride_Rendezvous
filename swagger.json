@@ -24,9 +24,9 @@
                 "responses": {}
             }
         },
-        "/clubs": {
+        "/cars/": {
             "get": {
-                "description": "Get all clubs",
+                "description": "",
                 "parameters": [
                     {
                         "name": "apiKey",
@@ -51,7 +51,7 @@
                 ]
             },
             "post": {
-                "description": "Create a new club",
+                "description": "",
                 "parameters": [
                     {
                         "name": "apiKey",
@@ -64,25 +64,23 @@
                         "schema": {
                             "type": "object",
                             "properties": {
-                                "name": {
-                                    "type": "string",
-                                    "example": "Club Name"
+                                "carMake": {
+                                    "example": "any"
                                 },
-                                "location": {
-                                    "type": "string",
-                                    "example": "Club Location"
+                                "carModel": {
+                                    "example": "any"
                                 },
-                                "president": {
-                                    "type": "string",
-                                    "example": "Club President"
+                                "engineSize": {
+                                    "example": "any"
                                 },
-                                "clubMembers": {
-                                    "type": "string",
-                                    "example": "Club Members"
+                                "color": {
+                                    "example": "any"
                                 },
-                                "organizer": {
-                                    "type": "string",
-                                    "example": "Club Organizer"
+                                "year": {
+                                    "example": "any"
+                                },
+                                "price": {
+                                    "example": "any"
                                 }
                             }
                         }
@@ -108,9 +106,162 @@
                 ]
             }
         },
-        "/clubs/{id}": {
+        "/cars/{id}": {
             "get": {
-                "description": "Get a specific club by ID",
+                "description": "",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "security": [
+                    {
+                        "oauth2": [
+                            "read"
+                        ]
+                    }
+                ]
+            },
+            "put": {
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "carMake": {
+                                    "example": "any"
+                                },
+                                "carModel": {
+                                    "example": "any"
+                                },
+                                "engineSize": {
+                                    "example": "any"
+                                },
+                                "color": {
+                                    "example": "any"
+                                },
+                                "year": {
+                                    "example": "any"
+                                },
+                                "price": {
+                                    "example": "any"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            },
+            "delete": {
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            }
+        },
+        "/person/": {
+            "get": {
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "apiKey",
+                        "in": "header",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            },
+            "post": {
+                "description": "POST person",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "firstName": {
+                                    "example": "any"
+                                },
+                                "lastName": {
+                                    "example": "any"
+                                },
+                                "birthday": {
+                                    "example": "any"
+                                },
+                                "email": {
+                                    "example": "any"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            }
+        },
+        "/person/{id}": {
+            "get": {
+                "description": "",
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "id",
@@ -138,7 +289,7 @@
                 ]
             },
             "put": {
-                "description": "Update a specific club",
+                "description": "",
                 "parameters": [
                     {
                         "name": "id",
@@ -157,25 +308,17 @@
                         "schema": {
                             "type": "object",
                             "properties": {
-                                "name": {
-                                    "type": "string",
-                                    "example": "Club Name"
+                                "firstName": {
+                                    "example": "any"
                                 },
-                                "location": {
-                                    "type": "string",
-                                    "example": "Club Location"
+                                "lastName": {
+                                    "example": "any"
                                 },
-                                "president": {
-                                    "type": "string",
-                                    "example": "Club President"
+                                "birthday": {
+                                    "example": "any"
                                 },
-                                "clubMembers": {
-                                    "type": "string",
-                                    "example": "Club Members"
-                                },
-                                "organizer": {
-                                    "type": "string",
-                                    "example": "Club Organizer"
+                                "email": {
+                                    "example": "any"
                                 }
                             }
                         }
@@ -191,190 +334,7 @@
                 }
             },
             "delete": {
-                "description": "Delete a specific club",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "apiKey",
-                        "in": "header",
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "204": {
-                        "description": "No Content"
-                    },
-                    "500": {
-                        "description": "Internal Server Error"
-                    }
-                }
-            }
-        },
-        "/events": {
-            "get": {
-                "description": "Get all events",
-                "parameters": [
-                    {
-                        "name": "apiKey",
-                        "in": "header",
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK"
-                    },
-                    "500": {
-                        "description": "Internal Server Error"
-                    }
-                },
-                "security": [
-                    {
-                        "oauth2": [
-                            "read"
-                        ]
-                    }
-                ]
-            },
-            "post": {
-                "description": "Create a new event",
-                "parameters": [
-                    {
-                        "name": "apiKey",
-                        "in": "header",
-                        "type": "string"
-                    },
-                    {
-                        "name": "body",
-                        "in": "body",
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "date": {
-                                    "type": "string",
-                                    "example": "Event Date"
-                                },
-                                "time": {
-                                    "type": "string",
-                                    "example": "Event Time"
-                                },
-                                "location": {
-                                    "type": "string",
-                                    "example": "Event Location"
-                                },
-                                "organizer": {
-                                    "type": "string",
-                                    "example": "Event Organizer"
-                                }
-                            }
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK"
-                    },
-                    "400": {
-                        "description": "Bad Request"
-                    },
-                    "500": {
-                        "description": "Internal Server Error"
-                    }
-                },
-                "security": [
-                    {
-                        "oauth2": [
-                            "write"
-                        ]
-                    }
-                ]
-            }
-        },
-        "/events/{id}": {
-            "get": {
-                "description": "Get a specific event by ID",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "apiKey",
-                        "in": "header",
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK"
-                    }
-                },
-                "security": [
-                    {
-                        "oauth2": [
-                            "read"
-                        ]
-                    }
-                ]
-            },
-            "put": {
-                "description": "Update a specific event",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "apiKey",
-                        "in": "header",
-                        "type": "string"
-                    },
-                    {
-                        "name": "body",
-                        "in": "body",
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "date": {
-                                    "type": "string",
-                                    "example": "Event Date"
-                                },
-                                "time": {
-                                    "type": "string",
-                                    "example": "Event Time"
-                                },
-                                "location": {
-                                    "type": "string",
-                                    "example": "Event Location"
-                                },
-                                "organizer": {
-                                    "type": "string",
-                                    "example": "Event Organizer"
-                                }
-                            }
-                        }
-                    }
-                ],
-                "responses": {
-                    "204": {
-                        "description": "No Content"
-                    },
-                    "500": {
-                        "description": "Internal Server Error"
-                    }
-                }
-            },
-            "delete": {
-                "description": "Delete a specific event",
+                "description": "",
                 "parameters": [
                     {
                         "name": "id",
@@ -409,5 +369,391 @@
             }
         ],
         "responses": {}
+    },
+    "/clubs": {
+    "get": {
+        "description": "Get all clubs",
+        "parameters": [
+            {
+                "name": "apiKey",
+                "in": "header",
+                "type": "string"
+            }
+        ],
+        "responses": {
+            "200": {
+                "description": "OK"
+            },
+            "500": {
+                "description": "Internal Server Error"
+            }
+        },
+        "security": [
+            {
+                "oauth2": [
+                    "read"
+                ]
+            }
+        ]
+    },
+    "post": {
+        "description": "Create a new club",
+        "parameters": [
+            {
+                "name": "apiKey",
+                "in": "header",
+                "type": "string"
+            },
+            {
+                "name": "body",
+                "in": "body",
+                "schema": {
+                    "type": "object",
+                    "properties": {
+                        "name": {
+                            "type": "string",
+                            "example": "Club Name"
+                        },
+                        "location": {
+                            "type": "string",
+                            "example": "Club Location"
+                        },
+                        "president": {
+                            "type": "string",
+                            "example": "Club President"
+                        },
+                        "clubMembers": {
+                            "type": "string",
+                            "example": "Club Members"
+                        },
+                        "organizer": {
+                            "type": "string",
+                            "example": "Club Organizer"
+                        }
+                    }
+                }
+            }
+        ],
+        "responses": {
+            "200": {
+                "description": "OK"
+            },
+            "400": {
+                "description": "Bad Request"
+            },
+            "500": {
+                "description": "Internal Server Error"
+            }
+        },
+        "security": [
+            {
+                "oauth2": [
+                    "write"
+                ]
+            }
+        ]
     }
+},
+"/clubs/{id}": {
+    "get": {
+        "description": "Get a specific club by ID",
+        "parameters": [
+            {
+                "name": "id",
+                "in": "path",
+                "required": true,
+                "type": "string"
+            },
+            {
+                "name": "apiKey",
+                "in": "header",
+                "type": "string"
+            }
+        ],
+        "responses": {
+            "200": {
+                "description": "OK"
+            }
+        },
+        "security": [
+            {
+                "oauth2": [
+                    "read"
+                ]
+            }
+        ]
+    },
+    "put": {
+        "description": "Update a specific club",
+        "parameters": [
+            {
+                "name": "id",
+                "in": "path",
+                "required": true,
+                "type": "string"
+            },
+            {
+                "name": "apiKey",
+                "in": "header",
+                "type": "string"
+            },
+            {
+                "name": "body",
+                "in": "body",
+                "schema": {
+                    "type": "object",
+                    "properties": {
+                        "name": {
+                            "type": "string",
+                            "example": "Club Name"
+                        },
+                        "location": {
+                            "type": "string",
+                            "example": "Club Location"
+                        },
+                        "president": {
+                            "type": "string",
+                            "example": "Club President"
+                        },
+                        "clubMembers": {
+                            "type": "string",
+                            "example": "Club Members"
+                        },
+                        "organizer": {
+                            "type": "string",
+                            "example": "Club Organizer"
+                        }
+                    }
+                }
+            }
+        ],
+        "responses": {
+            "204": {
+                "description": "No Content"
+            },
+            "500": {
+                "description": "Internal Server Error"
+            }
+        }
+    },
+    "delete": {
+        "description": "Delete a specific club",
+        "parameters": [
+            {
+                "name": "id",
+                "in": "path",
+                "required": true,
+                "type": "string"
+            },
+            {
+                "name": "apiKey",
+                "in": "header",
+                "type": "string"
+            }
+        ],
+        "responses": {
+            "204": {
+                "description": "No Content"
+            },
+            "500": {
+                "description": "Internal Server Error"
+            }
+        }
+    }
+},
+"/events": {
+    "get": {
+        "description": "Get all events",
+        "parameters": [
+            {
+                "name": "apiKey",
+                "in": "header",
+                "type": "string"
+            }
+        ],
+        "responses": {
+            "200": {
+                "description": "OK"
+            },
+            "500": {
+                "description": "Internal Server Error"
+            }
+        },
+        "security": [
+            {
+                "oauth2": [
+                    "read"
+                ]
+            }
+        ]
+    },
+    "post": {
+        "description": "Create a new event",
+        "parameters": [
+            {
+                "name": "apiKey",
+                "in": "header",
+                "type": "string"
+            },
+            {
+                "name": "body",
+                "in": "body",
+                "schema": {
+                    "type": "object",
+                    "properties": {
+                        "date": {
+                            "type": "string",
+                            "example": "Event Date"
+                        },
+                        "time": {
+                            "type": "string",
+                            "example": "Event Time"
+                        },
+                        "location": {
+                            "type": "string",
+                            "example": "Event Location"
+                        },
+                        "organizer": {
+                            "type": "string",
+                            "example": "Event Organizer"
+                        }
+                    }
+                }
+            }
+        ],
+        "responses": {
+            "200": {
+                "description": "OK"
+            },
+            "400": {
+                "description": "Bad Request"
+            },
+            "500": {
+                "description": "Internal Server Error"
+            }
+        },
+        "security": [
+            {
+                "oauth2": [
+                    "write"
+                ]
+            }
+        ]
+    }
+},
+"/events/{id}": {
+    "get": {
+        "description": "Get a specific event by ID",
+        "parameters": [
+            {
+                "name": "id",
+                "in": "path",
+                "required": true,
+                "type": "string"
+            },
+            {
+                "name": "apiKey",
+                "in": "header",
+                "type": "string"
+            }
+        ],
+        "responses": {
+            "200": {
+                "description": "OK"
+            }
+        },
+        "security": [
+            {
+                "oauth2": [
+                    "read"
+                ]
+            }
+        ]
+    },
+    "put": {
+        "description": "Update a specific event",
+        "parameters": [
+            {
+                "name": "id",
+                "in": "path",
+                "required": true,
+                "type": "string"
+            },
+            {
+                "name": "apiKey",
+                "in": "header",
+                "type": "string"
+            },
+            {
+                "name": "body",
+                "in": "body",
+                "schema": {
+                    "type": "object",
+                    "properties": {
+                        "date": {
+                            "type": "string",
+                            "example": "Event Date"
+                        },
+                        "time": {
+                            "type": "string",
+                            "example": "Event Time"
+                        },
+                        "location": {
+                            "type": "string",
+                            "example": "Event Location"
+                        },
+                        "organizer": {
+                            "type": "string",
+                            "example": "Event Organizer"
+                        }
+                    }
+                }
+            }
+        ],
+        "responses": {
+            "204": {
+                "description": "No Content"
+            },
+            "500": {
+                "description": "Internal Server Error"
+            }
+        }
+    },
+    "delete": {
+        "description": "Delete a specific event",
+        "parameters": [
+            {
+                "name": "id",
+                "in": "path",
+                "required": true,
+                "type": "string"
+            },
+            {
+                "name": "apiKey",
+                "in": "header",
+                "type": "string"
+            }
+        ],
+        "responses": {
+            "204": {
+                "description": "No Content"
+            },
+            "500": {
+                "description": "Internal Server Error"
+            }
+        }
+    }
+}
+},
+"get": {
+"description": "Get People",
+"parameters": [
+    {
+        "name": "apiKey",
+        "in": "header",
+        "type": "string"
+    }
+],
+"responses": {}
+}
 }
