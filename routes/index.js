@@ -10,7 +10,7 @@ router.get('/home', (req, res) => {
 });
 // router.use('/user', require('./events'));
 // router.use('/person', require('./person'));
-// router.use('/cars', require('./cars'));
+router.use('/cars', require('./cars'));
 // router.use('/', require('./swagger'));
 
 module.exports = router;
