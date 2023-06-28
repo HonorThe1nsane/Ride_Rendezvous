@@ -3,3 +3,35 @@ GET http://localhost:8080/home
 ###
 
 GET https://riderendezvous.onrender.com/home
+
+### 
+GET http://localhost:8080/person
+
+###
+POST http://localhost:8080/person 
+Content-Type: application/json
+
+{
+    "firstName": "johnny",
+    "lastName": "any",
+    "email": "any",
+    "birthday": "any",
+    "city": "any",
+    "state": "any"
+}
+
+### 
+PUT http://localhost:8080/person/649c94cb4d8032013bb3a7a7
+Content-Type: application/json
+
+{
+    "firstName": "updated",
+    "lastName": "updated",
+    "email": "updated",
+    "birthday": "updated",
+    "city": "updated",
+    "state": "updated"
+}
+
+### 
+DELETE http://localhost:8080/person/649c94cb4d8032013bb3a7a7

@@ -166,7 +166,12 @@
             }
         },
         "/person/": {
+            
             "get": {
+                "tags": [
+                    "Person"
+                  ],
+               
                 "description": "",
                 "parameters": [
                     {
@@ -185,6 +190,9 @@
                 }
             },
             "post": {
+                "tags": [
+                    "Person"
+                  ],
                 "description": "POST person",
                 "parameters": [
                     {
@@ -224,6 +232,9 @@
         },
         "/person/{id}": {
             "get": {
+                "tags": [
+                    "Person"
+                  ],
                 "description": "",
                 "produces": [
                     "application/json"
@@ -248,6 +259,9 @@
                 }
             },
             "put": {
+                "tags": [
+                    "Person"
+                  ],
                 "description": "",
                 "parameters": [
                     {
@@ -293,6 +307,9 @@
                 }
             },
             "delete": {
+                "tags": [
+                    "Person"
+                  ],
                 "description": "",
                 "parameters": [
                     {
@@ -318,6 +335,9 @@
             }
         },
         "get": {
+            "tags": [
+                "Person"
+              ],
             "description": "Get People",
             "parameters": [
                 {

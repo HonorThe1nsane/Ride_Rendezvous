@@ -1,6 +1,6 @@
 module.exports = (mongoose) => {
     const Person = mongoose.model(
-        'person',
+        'persons',
         mongoose.Schema(
             {
                 // googleId: String, eventually we will need to add a googleId to the person
