@@ -10,8 +10,8 @@ const apiKey = process.env.API_KEY;
 
 
 
-const getAllCars = async (req, res) => {
-    const result = await mongodb.getDb().db().collection('cars').find();
+const getAllClubs = async (req, res) => {
+    const result = await mongodb.getDb().db('Ride_Rendezvous').collection('cars').find();
     result.toArray().then((lists) => {
         res.setHeader('Content-Type', 'application/json');
         res.status(200).json(lists);
@@ -24,15 +24,13 @@ exports.findAll = (req, res) => {
 
     console.log(req.header('apiKey'));
     if (req.header('apiKey') === apiKey) {
-        Car.find(
+        Club.find(
             {},
             {
-                carMake: 1,
-                carModel: 1,
-                engineSize: 1,
-                color: 1,
-                year: 1,
-                price: 1,
+                name: 1,
+                location: 1,
+                president: 1,
+                clubMembers: 1,
                 _id: 0,
             }
         )
@@ -42,7 +40,7 @@ exports.findAll = (req, res) => {
             .catch((err) => {
                 res.status(500).send({
                     message:
-                        err.message || 'Some error occurred while retrieving cars.',
+                        err.message || 'Some error occurred while retrieving clubs.',
                 });
             });
     } else {
@@ -50,9 +48,9 @@ exports.findAll = (req, res) => {
     }
 };
 //rest client function
-const getSingleCar = async (req, res) => {
+const getSingleClub = async (req, res) => {
     const userId = new ObjectId(req.params.id);
-    const result = await mongodb.getDb().db().collection('cars').find({ _id: userId });
+    const result = await mongodb.getDb().db('Ride_Rendezvous').collection('clubs').find({ _id: userId });
     result.toArray().then((lists) => {
         res.setHeader('Content-Type', 'application/json');
         res.status(200).json(lists[0]);
@@ -61,22 +59,22 @@ const getSingleCar = async (req, res) => {
 
 };
 //Work with swagger
-exports.getSingleCar = (req, res) => {
+exports.getSingleClub = (req, res) => {
 
     const id = new ObjectId(req.params.id);
     console.log(id);
     if (req.header('apiKey') === apiKey) {
-        Car.find({ _id: id })
+        Club.find({ _id: id })
             .then((data) => {
                 if (!data)
                     res
                         .status(404)
-                        .send({ message: 'No car found with id ' + id });
+                        .send({ message: 'No club found with id ' + id });
                 else res.send(data[0]);
             })
             .catch((err) => {
                 res.status(500).send({
-                    message: 'Error retrieving car with id=' + id,
+                    message: 'Error retrieving club with id=' + id,
                 });
             });
     } else {
@@ -84,17 +82,15 @@ exports.getSingleCar = (req, res) => {
     }
 };
 // rest client
-const createNewCar = async (req, res) => {
-    const car = {
-        carMake: req.body.carMake,
-        carModel: req.body.carModel,
-        engineSize: req.body.engineSize,
-        color: req.body.color,
-        year: req.body.year,
-        price: req.body.price
+const createNewClub = async (req, res) => {
+    const club = {
+        name: req.body.name,
+        location: req.body.location,
+        president: req.body.president,
+        clubMembers: req.body.clubMembers
     };
 
-    const response = await mongodb.getDb().db().collection('cars').insertOne(car);
+    const response = await mongodb.getDb().db('Ride_Rendezvous').collection('clubs').insertOne(car);
     if (response.acknowledged) {
         res.status(201).json(response);
         console.log("Car added successfully");
@@ -106,25 +102,23 @@ const createNewCar = async (req, res) => {
 };
 
 //Swagger
-exports.createNewCar = async (req, res) => {
+exports.createNewClub = async (req, res) => {
     const car = {
-        carMake: req.body.carMake,
-        carModel: req.body.carModel,
-        engineSize: req.body.engineSize,
-        color: req.body.color,
-        year: req.body.year,
-        price: req.body.price
+        name: req.body.name,
+        location: req.body.location,
+        president: req.body.president,
+        clubMembers: req.body.clubMembers
     };
 
-    const response = await mongodb.getDb().db().collection('cars').insertOne(car);
+    const response = await mongodb.getDb().db('Ride_Rendezvous').collection('clubs').insertOne(car);
     if (response.acknowledged) {
-        res.status(201).json(response, 'Car created successfully');
+        res.status(201).json(response, 'Club created successfully');
     } else {
-        res.status(500).json(response.error, 'Some error occurred while creating the car.');
+        res.status(500).json(response.error, 'Some error occurred while creating the club.');
     }
 };
 //Rest client function
-const updateCar = async (req, res) => {
+const updateClub = async (req, res) => {
     if (!req.body) {
         return res.status(400).send({
             message: 'Data to update cannot be empty!',
@@ -132,19 +126,17 @@ const updateCar = async (req, res) => {
     }
     const userId = new ObjectId(req.params.id);
     const car = {
-        carMake: req.body.carMake,
-        carModel: req.body.carModel,
-        engineSize: req.body.engineSize,
-        color: req.body.color,
-        year: req.body.year,
-        price: req.body.price
+        name: req.body.name,
+        location: req.body.location,
+        president: req.body.president,
+        clubMembers: req.body.clubMembers
     };
-    const response = await mongodb.getDb().db().collection('cars').replaceOne({ _id: userId }, car);
+    const response = await mongodb.getDb().db('Ride_Rendezvous').collection('clubs').replaceOne({ _id: userId }, car);
     console.log(response);
     if (response.modifiedCount > 0) {
-        res.status(204).send('Car updated successfully');
+        res.status(204).send('Club updated successfully');
     } else {
-        res.status(500).json({ error: 'Some error occurred while updating the car in Hot-cars.' });
+        res.status(500).json({ error: 'Some error occurred while updating the club in Ride_Rendezvous.' });
     }
 };
 
@@ -162,13 +154,13 @@ exports.update = (req, res) => {
         .then((data) => {
             if (!data) {
                 res.status(404).send({
-                    message: `Cannot update Car with id=${id}. Maybe the car was not found!`,
+                    message: `Cannot update Club with id=${id}. Maybe the Club was not found!`,
                 });
-            } else res.send({ message: 'Car was updated successfully.' });
+            } else res.send({ message: `Club id name=${name}} was updated successfully.` });
         })
         .catch((err) => {
             res.status(500).send({
-                message: 'Error updating Car with id=' + id,
+                message: 'Error updating Club with id=' + id,
             });
         });
 };
@@ -176,14 +168,14 @@ exports.update = (req, res) => {
 
 
 //Rest client
-const deleteCar = async (req, res) => {
+const deleteClub = async (req, res) => {
     const userId = new ObjectId(req.params.id);
-    const response = await mongodb.getDb().db().collection('cars').remove({ _id: userId }, true);
+    const response = await mongodb.getDb().db('Ride_Rendezvous').collection('clubs').remove({ _id: userId }, true);
     console.log(response);
     if (response.deletedCount > 0) {
         res.status(204).send();
     } else {
-        res.status(500).json(response.error || 'An error occurred while deleting the car.');
+        res.status(500).json(response.error || 'An error occurred while deleting the Club.');
     }
 };
 
@@ -197,20 +189,20 @@ exports.delete = (req, res) => {
         .then((data) => {
             if (!data) {
                 res.status(404).send({
-                    message: `Cannot delete Car with id=${id}. The car was not found!`,
+                    message: `Cannot delete Club with id=${id}. The club was not found!`,
                 });
             } else {
                 res.send({
-                    message: 'Car was deleted successfully!',
+                    message: 'Club was deleted successfully!',
                 });
             }
         })
         .catch((err) => {
             res.status(500).send({
-                message: 'Could not delete Car with id=' + id,
+                message: 'Could not delete Club with id=' + id,
             });
         });
 };
 
 
-module.exports = { getSingleCar, getAllCars, createNewCar, updateCar, deleteCar };
+module.exports = { getAllClubs, getSingleClub, createNewClub, updateClub, deleteClub };
