@@ -11,7 +11,7 @@ const apiKey = process.env.API_KEY;
 
 //Restful
 const getAllClubs = async (req, res) => {
-    const result = await mongodb.getDb().db('Ride_Rendezvous').collection('cars').find();
+    const result = await mongodb.getDb().db('Ride_Rendezvous').collection('clubs').find();
     result.toArray().then((lists) => {
         res.setHeader('Content-Type', 'application/json');
         res.status(200).json(lists);
@@ -90,27 +90,27 @@ const createNewClub = async (req, res) => {
         clubMembers: req.body.clubMembers
     };
 
-    const response = await mongodb.getDb().db('Ride_Rendezvous').collection('clubs').insertOne(car);
+    const response = await mongodb.getDb().db('Ride_Rendezvous').collection('clubs').insertOne(club);
     if (response.acknowledged) {
         res.status(201).json(response);
-        console.log("Car added successfully");
+        console.log("Club added successfully");
     } else {
         res.status(500).json(response.error)
-        console.log("Car not added, error: " + response.error);
+        console.log("Club not added, error: " + response.error);
     }
     console.log(response);
 };
 
 //Swagger
 exports.createNewClub = async (req, res) => {
-    const car = {
+    const club = {
         name: req.body.name,
         location: req.body.location,
         president: req.body.president,
         clubMembers: req.body.clubMembers
     };
 
-    const response = await mongodb.getDb().db('Ride_Rendezvous').collection('clubs').insertOne(car);
+    const response = await mongodb.getDb().db('Ride_Rendezvous').collection('clubs').insertOne(club);
     if (response.acknowledged) {
         res.status(201).json(response, 'Club created successfully');
     } else {
@@ -125,13 +125,13 @@ const updateClub = async (req, res) => {
         });
     }
     const userId = new ObjectId(req.params.id);
-    const car = {
+    const club = {
         name: req.body.name,
         location: req.body.location,
         president: req.body.president,
         clubMembers: req.body.clubMembers
     };
-    const response = await mongodb.getDb().db('Ride_Rendezvous').collection('clubs').replaceOne({ _id: userId }, car);
+    const response = await mongodb.getDb().db('Ride_Rendezvous').collection('clubs').replaceOne({ _id: userId }, club);
     console.log(response);
     if (response.modifiedCount > 0) {
         res.status(204).send('Club updated successfully');
@@ -150,7 +150,7 @@ exports.update = (req, res) => {
 
     const id = new ObjectId(req.params.id);
 
-    Car.findByIdAndUpdate(id, req.body, { useFindAndModify: false })
+    Club.findByIdAndUpdate(id, req.body, { useFindAndModify: false })
         .then((data) => {
             if (!data) {
                 res.status(404).send({
@@ -181,11 +181,11 @@ const deleteClub = async (req, res) => {
 
 // Swagger
 
-// Delete a Car with the specified id in the request
+// Delete a Club with the specified id in the request
 exports.delete = (req, res) => {
     const id = req.params.id;
 
-    Cars.findByIdAndRemove(id)
+    Club.findByIdAndRemove(id)
         .then((data) => {
             if (!data) {
                 res.status(404).send({
