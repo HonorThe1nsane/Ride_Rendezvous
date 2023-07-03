@@ -12,8 +12,8 @@ router.post('/', [
     check('eventName').not().trim().isEmpty().escape(),
     check('date').not().trim().isEmpty().escape(),
     check('time').not().trim().isEmpty().escape(),
-    check('').not().trim().isEmpty().escape(),
-    check('').not().trim().isEmpty().escape(),
+    check('location').not().trim().isEmpty().escape(),
+    check('organizer').not().trim().isEmpty().escape(),
 ], eventsController.createEvent);
 
 
