@@ -14,8 +14,28 @@ router.post('/', [
     check('time').not().trim().isEmpty().escape(),
     check('location').not().trim().isEmpty().escape(),
     check('organizer').not().trim().isEmpty().escape(),
-], eventsController.createEvent);
+], (req, res) => {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            console.log(errors.array());
+            return res.status(400).json({ errors: errors.array() });
+        } eventsController.createEvent});
 
+
+router.put('/:id', [
+    check('eventName').not().trim().isEmpty().escape(),
+    check('date').not().trim().isEmpty().escape(),
+    check('time').not().trim().isEmpty().escape(),
+    check('location').not().trim().isEmpty().escape(),
+    check('organizer').not().trim().isEmpty().escape(),
+], (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        console.log(errors.array());
+        return res.status(400).json({ errors: errors.array() });
+    }
+
+eventsController.updateEvent});
 
 
 module.exports = router;
