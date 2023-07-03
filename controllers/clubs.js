@@ -9,7 +9,7 @@ const Club = db.clubs;
 const apiKey = process.env.API_KEY;
 
 
-
+//Restful
 const getAllClubs = async (req, res) => {
     const result = await mongodb.getDb().db('Ride_Rendezvous').collection('cars').find();
     result.toArray().then((lists) => {
@@ -19,7 +19,7 @@ const getAllClubs = async (req, res) => {
     });
 
 };
-//Swagger function
+//Swagger
 exports.findAll = (req, res) => {
 
     console.log(req.header('apiKey'));
@@ -47,7 +47,7 @@ exports.findAll = (req, res) => {
         res.send('Invalid apiKey, please read the documentation.');
     }
 };
-//rest client function
+//Restful
 const getSingleClub = async (req, res) => {
     const userId = new ObjectId(req.params.id);
     const result = await mongodb.getDb().db('Ride_Rendezvous').collection('clubs').find({ _id: userId });
@@ -58,7 +58,7 @@ const getSingleClub = async (req, res) => {
     });
 
 };
-//Work with swagger
+// Swagger
 exports.getSingleClub = (req, res) => {
 
     const id = new ObjectId(req.params.id);
@@ -81,7 +81,7 @@ exports.getSingleClub = (req, res) => {
         res.send('Invalid apiKey, please read the documentation.');
     }
 };
-// rest client
+// Rest client function
 const createNewClub = async (req, res) => {
     const club = {
         name: req.body.name,
@@ -140,7 +140,7 @@ const updateClub = async (req, res) => {
     }
 };
 
-//swagger
+//Swagger
 exports.update = (req, res) => {
     if (!req.body) {
         return res.status(400).send({
@@ -167,7 +167,7 @@ exports.update = (req, res) => {
 
 
 
-//Rest client
+//Rest Client
 const deleteClub = async (req, res) => {
     const userId = new ObjectId(req.params.id);
     const response = await mongodb.getDb().db('Ride_Rendezvous').collection('clubs').remove({ _id: userId }, true);
