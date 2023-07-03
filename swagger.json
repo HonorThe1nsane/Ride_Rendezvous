@@ -27,11 +27,6 @@
                 "description": "",
                 "parameters": [
                     {
-                        "name": "apiKey",
-                        "in": "header",
-                        "type": "string"
-                    },
-                    {
                         "name": "body",
                         "in": "body",
                         "schema": {
@@ -159,20 +154,11 @@
             }
         },
         "/person/": {
-            
             "get": {
                 "tags": [
                     "Person"
-                  ],
-               
-                "description": "",
-                "parameters": [
-                    {
-                        "name": "apiKey",
-                        "in": "header",
-                        "type": "string"
-                    }
                 ],
+                "description": "",
                 "responses": {
                     "200": {
                         "description": "OK"
@@ -185,7 +171,7 @@
             "post": {
                 "tags": [
                     "Person"
-                  ],
+                ],
                 "description": "POST person",
                 "parameters": [
                     {
@@ -227,7 +213,7 @@
             "get": {
                 "tags": [
                     "Person"
-                  ],
+                ],
                 "description": "",
                 "produces": [
                     "application/json"
@@ -237,11 +223,6 @@
                         "name": "id",
                         "in": "path",
                         "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "apiKey",
-                        "in": "header",
                         "type": "string"
                     }
                 ],
@@ -254,18 +235,13 @@
             "put": {
                 "tags": [
                     "Person"
-                  ],
+                ],
                 "description": "",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
                         "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "apiKey",
-                        "in": "header",
                         "type": "string"
                     },
                     {
@@ -302,18 +278,13 @@
             "delete": {
                 "tags": [
                     "Person"
-                  ],
+                ],
                 "description": "",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
                         "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "apiKey",
-                        "in": "header",
                         "type": "string"
                     }
                 ],
@@ -330,27 +301,13 @@
         "get": {
             "tags": [
                 "Person"
-              ],
-            "description": "Get People",
-            "parameters": [
-                {
-                    "name": "apiKey",
-                    "in": "header",
-                    "type": "string"
-                }
             ],
+            "description": "Get People",
             "responses": {}
         },
         "/clubs": {
             "get": {
                 "description": "Get all clubs",
-                "parameters": [
-                    {
-                        "name": "apiKey",
-                        "in": "header",
-                        "type": "string"
-                    }
-                ],
                 "responses": {
                     "200": {
                         "description": "OK"
@@ -363,11 +320,6 @@
             "post": {
                 "description": "Create a new club",
                 "parameters": [
-                    {
-                        "name": "apiKey",
-                        "in": "header",
-                        "type": "string"
-                    },
                     {
                         "name": "body",
                         "in": "body",
@@ -420,11 +372,6 @@
                         "in": "path",
                         "required": true,
                         "type": "string"
-                    },
-                    {
-                        "name": "apiKey",
-                        "in": "header",
-                        "type": "string"
                     }
                 ],
                 "responses": {
@@ -440,11 +387,6 @@
                         "name": "id",
                         "in": "path",
                         "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "apiKey",
-                        "in": "header",
                         "type": "string"
                     },
                     {
@@ -494,11 +436,6 @@
                         "in": "path",
                         "required": true,
                         "type": "string"
-                    },
-                    {
-                        "name": "apiKey",
-                        "in": "header",
-                        "type": "string"
                     }
                 ],
                 "responses": {
@@ -514,13 +451,6 @@
         "/events": {
             "get": {
                 "description": "Get all events",
-                "parameters": [
-                    {
-                        "name": "apiKey",
-                        "in": "header",
-                        "type": "string"
-                    }
-                ],
                 "responses": {
                     "200": {
                         "description": "OK"
@@ -533,11 +463,6 @@
             "post": {
                 "description": "Create a new event",
                 "parameters": [
-                    {
-                        "name": "apiKey",
-                        "in": "header",
-                        "type": "string"
-                    },
                     {
                         "name": "body",
                         "in": "body",
@@ -586,11 +511,6 @@
                         "in": "path",
                         "required": true,
                         "type": "string"
-                    },
-                    {
-                        "name": "apiKey",
-                        "in": "header",
-                        "type": "string"
                     }
                 ],
                 "responses": {
@@ -606,11 +526,6 @@
                         "name": "id",
                         "in": "path",
                         "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "apiKey",
-                        "in": "header",
                         "type": "string"
                     },
                     {
@@ -655,11 +570,6 @@
                         "name": "id",
                         "in": "path",
                         "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "apiKey",
-                        "in": "header",
                         "type": "string"
                     }
                 ],
