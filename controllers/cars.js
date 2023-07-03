@@ -6,12 +6,12 @@ const mongodb = require('../db/connect');
 const db = require('../models');
 const Car = db.car;
 
-const apiKey = process.env.API_KEY;
+const apiKey = process.env.API_KEY_PRIVATE;
 
 
 
 const getAllCars = async (req, res) => {
-    const result = await mongodb.getDb().db().collection('cars').find();
+    const result = await mongodb.getDb().db('Ride_Rendezvous').collection('cars').find();
     result.toArray().then((lists) => {
         res.setHeader('Content-Type', 'application/json');
         res.status(200).json(lists);
@@ -105,7 +105,7 @@ const createNewCar = async (req, res) => {
     console.log(response);
 };
 
-//work with swagger
+//Swagger
 exports.createNewCar = async (req, res) => {
     const car = {
         carMake: req.body.carMake,
@@ -123,7 +123,7 @@ exports.createNewCar = async (req, res) => {
         res.status(500).json(response.error, 'Some error occurred while creating the car.');
     }
 };
-//rest client function
+//Rest client function
 const updateCar = async (req, res) => {
     if (!req.body) {
         return res.status(400).send({

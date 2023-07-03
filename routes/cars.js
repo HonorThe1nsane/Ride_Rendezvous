@@ -4,19 +4,7 @@ const carsController = require('../controllers/cars');
 const { check, validationResult } = require('express-validator');
 
 //Get all cars
-router.get('/', [
-    check('carMake', 'Car make is required').not().trim().isEmpty().escape(),
-    check('carModel', 'Car model is required').not().trim().isEmpty().escape(),
-    check('engineSize', 'Engine size is required').not().trim().isEmpty().escape(),
-    check('color', 'Color is required').not().trim().isEmpty().escape(),
-    check('year', 'Year is required').not().trim().isEmpty().escape(),
-], (req, res) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-        console.log(errors.array());
-        return res.status(400).json({ errors: errors.array() });
-    } carsController.getAllCars(req, res)
-});
+router.get("/", carsController.getAllCars);
 
 //Get single car
 router.get('/:id', [

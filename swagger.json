@@ -14,13 +14,6 @@
         "/cars/": {
             "get": {
                 "description": "",
-                "parameters": [
-                    {
-                        "name": "apiKey",
-                        "in": "header",
-                        "type": "string"
-                    }
-                ],
                 "responses": {
                     "200": {
                         "description": "OK"
