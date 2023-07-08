@@ -10,9 +10,9 @@ const getAll = async (req, res) => {
     }
 };
 
-const getSpecific = async (req, res) => { 
+const getSpecific = async (req, res) => {
     try {
-        const { id } = req.params;  
+        const { id } = req.params;
         const result = await personSchema.findById(id);
         res.json({ message: "user found", result: result });
     } catch (err) {
@@ -57,7 +57,7 @@ const deletePerson = async (req, res) => {
     const { id } = req.params;
     try {
         const data = await personSchema.deleteOne({ _id: id });
-        res.status(200).json({message: "Congrats a user has been deleted.", data: data});
+        res.status(200).json({ message: "Congrats a user has been deleted.", data: data });
     } catch (err) {
         res.status(400).json({ message: err });
     }
