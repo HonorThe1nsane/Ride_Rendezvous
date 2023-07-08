@@ -4,11 +4,6 @@ const ObjectId = require('mongodb').ObjectId;
 const mongodb = require('../db/connect');
 
 const db = require('../models');
-const Car = db.car;
-
-const apiKey = process.env.API_KEY_PRIVATE;
-
-
 
 const getAllCars = async (req, res) => {
     const result = await mongodb.getDb().db('Ride_Rendezvous').collection('cars').find();
@@ -212,5 +207,5 @@ exports.delete = (req, res) => {
         });
 };
 
-
 module.exports = { getSingleCar, getAllCars, createNewCar, updateCar, deleteCar };
+
