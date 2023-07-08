@@ -8,8 +8,12 @@ router.get('/home', (req, res) => {
 });
 
 router.use('/person', require('./person'));
-// router.use('/user', require('./events'));
+
 router.use('/cars', require('./cars'));
-// router.use('/', require('./swagger'));
+
+router.use('/events', require('./events'));
+
+router.use('/clubs', require('./clubs'));
+
 
 module.exports = router;
