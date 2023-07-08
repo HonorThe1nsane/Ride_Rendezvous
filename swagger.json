@@ -5,10 +5,11 @@
         "description": "Cars Meetup API",
         "version": "1.0.0"
     },
-    "host": "localhost:8080",
+    "host": "riderendezvous.onrender.com", 
     "basePath": "/",
+    
     "schemes": [
-        "http"
+        "https"
     ],
     "paths": {
         "/cars/": {
@@ -186,10 +187,16 @@
                                 "lastName": {
                                     "example": "any"
                                 },
+                                "email": {
+                                    "example": "any@gmail.com"
+                                },
                                 "birthday": {
                                     "example": "any"
                                 },
-                                "email": {
+                                "city": {
+                                    "example": "any"
+                                },
+                                "state": {
                                     "example": "any"
                                 }
                             }
@@ -256,10 +263,16 @@
                                 "lastName": {
                                     "example": "any"
                                 },
+                                "email": {
+                                    "example": "any@gmail.com"
+                                },
                                 "birthday": {
                                     "example": "any"
                                 },
-                                "email": {
+                                "city": {
+                                    "example": "any"
+                                },
+                                "state": {
                                     "example": "any"
                                 }
                             }
