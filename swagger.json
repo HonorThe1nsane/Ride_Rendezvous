@@ -5,15 +5,17 @@
         "description": "Cars Meetup API",
         "version": "1.0.0"
     },
-    "host": "riderendezvous.onrender.com", 
+    "host": "riderendezvous.onrender.com",
     "basePath": "/",
-    
     "schemes": [
         "https"
     ],
     "paths": {
         "/cars/": {
             "get": {
+                "tags": [
+                    "Cars"
+                ],
                 "description": "",
                 "responses": {
                     "200": {
@@ -25,6 +27,9 @@
                 }
             },
             "post": {
+                "tags": [
+                    "Cars"
+                ],
                 "description": "",
                 "parameters": [
                     {
@@ -70,6 +75,9 @@
         },
         "/cars/{id}": {
             "get": {
+                "tags": [
+                    "Cars"
+                ],
                 "description": "",
                 "produces": [
                     "application/json"
@@ -89,6 +97,9 @@
                 }
             },
             "put": {
+                "tags": [
+                    "Cars"
+                ],
                 "description": "",
                 "parameters": [
                     {
@@ -135,6 +146,9 @@
                 }
             },
             "delete": {
+                "tags": [
+                    "Cars"
+                ],
                 "description": "",
                 "parameters": [
                     {
@@ -320,6 +334,9 @@
         },
         "/clubs": {
             "get": {
+                "tags": [
+                    "Clubs"
+                ],
                 "description": "Get all clubs",
                 "responses": {
                     "200": {
@@ -331,6 +348,9 @@
                 }
             },
             "post": {
+                "tags": [
+                    "Clubs"
+                ],
                 "description": "Create a new club",
                 "parameters": [
                     {
@@ -378,6 +398,9 @@
         },
         "/clubs/{id}": {
             "get": {
+                "tags": [
+                    "Clubs"
+                ],
                 "description": "Get a specific club by ID",
                 "parameters": [
                     {
@@ -394,6 +417,9 @@
                 }
             },
             "put": {
+                "tags": [
+                    "Clubs"
+                ],
                 "description": "Update a specific club",
                 "parameters": [
                     {
@@ -442,6 +468,9 @@
                 }
             },
             "delete": {
+                "tags": [
+                    "Clubs"
+                ],
                 "description": "Delete a specific club",
                 "parameters": [
                     {
@@ -463,6 +492,9 @@
         },
         "/events": {
             "get": {
+                "tags": [
+                    "Events"
+                ],
                 "description": "Get all events",
                 "responses": {
                     "200": {
@@ -474,6 +506,9 @@
                 }
             },
             "post": {
+                "tags": [
+                    "Events"
+                ],
                 "description": "Create a new event",
                 "parameters": [
                     {
@@ -517,6 +552,9 @@
         },
         "/events/{id}": {
             "get": {
+                "tags": [
+                    "Events"
+                ],
                 "description": "Get a specific event by ID",
                 "parameters": [
                     {
@@ -533,6 +571,9 @@
                 }
             },
             "put": {
+                "tags": [
+                    "Events"
+                ],
                 "description": "Update a specific event",
                 "parameters": [
                     {
@@ -577,6 +618,9 @@
                 }
             },
             "delete": {
+                "tags": [
+                    "Events"
+                ],
                 "description": "Delete a specific event",
                 "parameters": [
                     {
