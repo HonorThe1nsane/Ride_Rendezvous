@@ -10,6 +10,16 @@ const getAll = async (req, res) => {
     }
 };
 
+const getSpecific = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const result = await personSchema.findById(id);
+        res.json({ message: "user found", result: result });
+    } catch (err) {
+        res.status(400).json({ message: err });
+    }
+}
+
 const postPerson = async (req, res) => {
     try {
         const users = personSchema({
@@ -21,7 +31,7 @@ const postPerson = async (req, res) => {
             state: req.body.state,
         });
         const data = await users.save();
-        res.json(data);
+        res.json({ message: "congratulations you created a new user", date: data });
     } catch {
         res.status(400).json({ message: err });
     }
@@ -47,7 +57,7 @@ const deletePerson = async (req, res) => {
     const { id } = req.params;
     try {
         const data = await personSchema.deleteOne({ _id: id });
-        res.status(200).json(data);
+        res.status(200).json({ message: "Congrats a user has been deleted.", data: data });
     } catch (err) {
         res.status(400).json({ message: err });
     }
@@ -55,6 +65,7 @@ const deletePerson = async (req, res) => {
 
 module.exports = {
     getAll,
+    getSpecific,
     postPerson,
     updatePerson,
     deletePerson,

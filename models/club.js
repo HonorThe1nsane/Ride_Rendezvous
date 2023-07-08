@@ -7,10 +7,9 @@ module.exports = (mongoose) => {
                 location: String,
                 president: String,
                 clubMembers: String,
-                president: String,
             },
             { timestamps: true }
         )
     );
-    return Person;
+    return Club;
 };

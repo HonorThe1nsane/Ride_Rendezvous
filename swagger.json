@@ -5,22 +5,16 @@
         "description": "Cars Meetup API",
         "version": "1.0.0"
     },
-    "host": "localhost:8080",
+    "host": "riderendezvous.onrender.com", 
     "basePath": "/",
+    
     "schemes": [
-        "http"
+        "https"
     ],
     "paths": {
         "/cars/": {
             "get": {
                 "description": "",
-                "parameters": [
-                    {
-                        "name": "apiKey",
-                        "in": "header",
-                        "type": "string"
-                    }
-                ],
                 "responses": {
                     "200": {
                         "description": "OK"
@@ -33,11 +27,6 @@
             "post": {
                 "description": "",
                 "parameters": [
-                    {
-                        "name": "apiKey",
-                        "in": "header",
-                        "type": "string"
-                    },
                     {
                         "name": "body",
                         "in": "body",
@@ -166,20 +155,11 @@
             }
         },
         "/person/": {
-            
             "get": {
                 "tags": [
                     "Person"
-                  ],
-               
-                "description": "",
-                "parameters": [
-                    {
-                        "name": "apiKey",
-                        "in": "header",
-                        "type": "string"
-                    }
                 ],
+                "description": "",
                 "responses": {
                     "200": {
                         "description": "OK"
@@ -192,7 +172,7 @@
             "post": {
                 "tags": [
                     "Person"
-                  ],
+                ],
                 "description": "POST person",
                 "parameters": [
                     {
@@ -207,10 +187,16 @@
                                 "lastName": {
                                     "example": "any"
                                 },
+                                "email": {
+                                    "example": "any@gmail.com"
+                                },
                                 "birthday": {
                                     "example": "any"
                                 },
-                                "email": {
+                                "city": {
+                                    "example": "any"
+                                },
+                                "state": {
                                     "example": "any"
                                 }
                             }
@@ -234,7 +220,7 @@
             "get": {
                 "tags": [
                     "Person"
-                  ],
+                ],
                 "description": "",
                 "produces": [
                     "application/json"
@@ -244,11 +230,6 @@
                         "name": "id",
                         "in": "path",
                         "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "apiKey",
-                        "in": "header",
                         "type": "string"
                     }
                 ],
@@ -261,18 +242,13 @@
             "put": {
                 "tags": [
                     "Person"
-                  ],
+                ],
                 "description": "",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
                         "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "apiKey",
-                        "in": "header",
                         "type": "string"
                     },
                     {
@@ -287,10 +263,16 @@
                                 "lastName": {
                                     "example": "any"
                                 },
+                                "email": {
+                                    "example": "any@gmail.com"
+                                },
                                 "birthday": {
                                     "example": "any"
                                 },
-                                "email": {
+                                "city": {
+                                    "example": "any"
+                                },
+                                "state": {
                                     "example": "any"
                                 }
                             }
@@ -309,18 +291,13 @@
             "delete": {
                 "tags": [
                     "Person"
-                  ],
+                ],
                 "description": "",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
                         "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "apiKey",
-                        "in": "header",
                         "type": "string"
                     }
                 ],
@@ -337,27 +314,13 @@
         "get": {
             "tags": [
                 "Person"
-              ],
-            "description": "Get People",
-            "parameters": [
-                {
-                    "name": "apiKey",
-                    "in": "header",
-                    "type": "string"
-                }
             ],
+            "description": "Get People",
             "responses": {}
         },
         "/clubs": {
             "get": {
                 "description": "Get all clubs",
-                "parameters": [
-                    {
-                        "name": "apiKey",
-                        "in": "header",
-                        "type": "string"
-                    }
-                ],
                 "responses": {
                     "200": {
                         "description": "OK"
@@ -370,11 +333,6 @@
             "post": {
                 "description": "Create a new club",
                 "parameters": [
-                    {
-                        "name": "apiKey",
-                        "in": "header",
-                        "type": "string"
-                    },
                     {
                         "name": "body",
                         "in": "body",
@@ -427,11 +385,6 @@
                         "in": "path",
                         "required": true,
                         "type": "string"
-                    },
-                    {
-                        "name": "apiKey",
-                        "in": "header",
-                        "type": "string"
                     }
                 ],
                 "responses": {
@@ -447,11 +400,6 @@
                         "name": "id",
                         "in": "path",
                         "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "apiKey",
-                        "in": "header",
                         "type": "string"
                     },
                     {
@@ -501,11 +449,6 @@
                         "in": "path",
                         "required": true,
                         "type": "string"
-                    },
-                    {
-                        "name": "apiKey",
-                        "in": "header",
-                        "type": "string"
                     }
                 ],
                 "responses": {
@@ -521,13 +464,6 @@
         "/events": {
             "get": {
                 "description": "Get all events",
-                "parameters": [
-                    {
-                        "name": "apiKey",
-                        "in": "header",
-                        "type": "string"
-                    }
-                ],
                 "responses": {
                     "200": {
                         "description": "OK"
@@ -540,11 +476,6 @@
             "post": {
                 "description": "Create a new event",
                 "parameters": [
-                    {
-                        "name": "apiKey",
-                        "in": "header",
-                        "type": "string"
-                    },
                     {
                         "name": "body",
                         "in": "body",
@@ -593,11 +524,6 @@
                         "in": "path",
                         "required": true,
                         "type": "string"
-                    },
-                    {
-                        "name": "apiKey",
-                        "in": "header",
-                        "type": "string"
                     }
                 ],
                 "responses": {
@@ -613,11 +539,6 @@
                         "name": "id",
                         "in": "path",
                         "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "apiKey",
-                        "in": "header",
                         "type": "string"
                     },
                     {
@@ -662,11 +583,6 @@
                         "name": "id",
                         "in": "path",
                         "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "apiKey",
-                        "in": "header",
                         "type": "string"
                     }
                 ],
