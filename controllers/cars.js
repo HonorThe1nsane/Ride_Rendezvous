@@ -14,6 +14,7 @@ const getAllCars = async (req, res) => {
     });
 
 };
+
 //Swagger function
 exports.findAll = (req, res) => {
 
@@ -59,7 +60,6 @@ const getSingleCar = async (req, res) => {
 exports.getSingleCar = (req, res) => {
 
     const id = new ObjectId(req.params.id);
-    console.log(id);
     if (req.header('apiKey') === apiKey) {
         Car.find({ _id: id })
             .then((data) => {
@@ -173,10 +173,10 @@ exports.update = (req, res) => {
 //Rest client
 const deleteCar = async (req, res) => {
     const userId = new ObjectId(req.params.id);
-    const response = await mongodb.getDb().db().collection('cars').remove({ _id: userId }, true);
+    const response = await mongodb.getDb().db().collection('cars').deleteOne({ _id: userId }, true);
     console.log(response);
     if (response.deletedCount > 0) {
-        res.status(204).send();
+        res.status(200).json({message: "car deleted"});
     } else {
         res.status(500).json(response.error || 'An error occurred while deleting the car.');
     }

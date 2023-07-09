@@ -19,7 +19,7 @@ router.post('/', [
         console.log(errors.array());
         return res.status(400).json({ errors: errors.array() });
     }
-    clubsController.createClub
+    clubsController.createNewClub()
 });
 
 router.put('/:id', [
