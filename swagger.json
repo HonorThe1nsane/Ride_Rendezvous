@@ -517,6 +517,10 @@
                         "schema": {
                             "type": "object",
                             "properties": {
+                                "eventName": {
+                                    "type": "string",
+                                    "example": "Event Name"
+                                },
                                 "date": {
                                     "type": "string",
                                     "example": "Event Date"
@@ -588,6 +592,10 @@
                         "schema": {
                             "type": "object",
                             "properties": {
+                                "eventName": {
+                                    "type": "string",
+                                    "example": "Event Name"
+                                },
                                 "date": {
                                     "type": "string",
                                     "example": "Event Date"
