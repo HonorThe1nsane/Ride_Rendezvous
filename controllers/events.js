@@ -174,7 +174,7 @@ exports.updateSingleEvent = (req, res) => {
 //Rest Client
 const deleteEvent = async (req, res) => {
     const userId = new ObjectId(req.params.id);
-    const response = await mongodb.getDb().db('Ride_Rendezvous').collection('events').remove({ _id: userId }, true);
+    const response = await mongodb.getDb().db('Ride_Rendezvous').collection('events').deleteOne({ _id: userId }, true);
     console.log(response);
     if (response.deletedCount > 0) {
         res.status(204).send();

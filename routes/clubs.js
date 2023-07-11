@@ -19,7 +19,7 @@ router.post('/', [
         console.log(errors.array());
         return res.status(400).json({ errors: errors.array() });
     }
-    clubsController.createClub
+    clubsController.createNewClub(req, res)
 });
 
 router.put('/:id', [
@@ -33,12 +33,9 @@ router.put('/:id', [
         console.log(errors.array());
         return res.status(400).json({ errors: errors.array() });
     }
-    clubsController.updateClub
+    clubsController.updateClub(req, res)
 });
 
 router.delete('/:id', clubsController.deleteClub);
-
-
-
 
 module.exports = router;

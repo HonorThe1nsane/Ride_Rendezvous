@@ -19,7 +19,7 @@ router.post('/', [
         if (!errors.isEmpty()) {
             console.log(errors.array());
             return res.status(400).json({ errors: errors.array() });
-        } eventsController.createEvent});
+        } eventsController.createNewEvent(req, res)});
 
 
 router.put('/:id', [
@@ -35,7 +35,10 @@ router.put('/:id', [
         return res.status(400).json({ errors: errors.array() });
     }
 
-eventsController.updateEvent});
+eventsController.updateEvent(req, res)});
+
+
+router.delete('/:id', eventsController.deleteEvent);
 
 
 module.exports = router;
