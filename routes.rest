@@ -7,7 +7,7 @@ GET http://localhost:8080/person
 
 ################################################################
 
-GET https://riderendezvous.onrender.com/home
+GET https://riderendezvous.onrender.com/login
 
 
 
