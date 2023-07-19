@@ -22,6 +22,11 @@ const config = {
   issuerBaseURL: process.env.ISSUER_BASE_URL,
 };
 
+app.get('/logout', (req, res) => {
+  req.logout(); // This will trigger the logout process
+  res.redirect('/'); // Redirect the user back to the homepage or another desired page
+});
+
 app
   // auth router attaches /login, /logout, and /callback routes to the baseURL
   .use(auth(config))
