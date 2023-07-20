@@ -5,7 +5,7 @@
         "description": "Cars Meetup API",
         "version": "1.0.0"
     },
-    "host": "ride-rendezvous-test.onrender.com",
+    "host": "riderendezvous.onrender.com",
     "basePath": "/",
     "schemes": [
         "https"
