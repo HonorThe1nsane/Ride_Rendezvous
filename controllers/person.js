@@ -30,8 +30,8 @@ const postPerson = async (req, res) => {
             state: req.body.state,
         });
         const data = await users.save();
-        res.json({ message: "congratulations you created a new user", data: data });
-    } catch {
+        res.json({ message: "congratulations you created a new user", userData: data });
+    } catch (err){
         res.status(400).json({ message: err });
     }
 };
