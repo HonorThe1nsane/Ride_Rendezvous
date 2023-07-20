@@ -1,5 +1,4 @@
-const db = require("../models/index");
-const personSchema = db.person;
+const personSchema = require("../models/person");
 
 const getAll = async (req, res) => {
     try {
@@ -22,7 +21,7 @@ const getSpecific = async (req, res) => {
 
 const postPerson = async (req, res) => {
     try {
-        const users = personSchema({
+        let users = await personSchema({
             firstName: req.body.firstName,
             lastName: req.body.lastName,
             email: req.body.email,

@@ -43,12 +43,12 @@ app
   })
   .use("/", require("./routes"));
 
-mongoose();
 mongodb.initDb((err, mongodb) => {
   if (err) {
     console.log(err);
   } else {
     app.listen(port);
+    mongoose();
     console.log(`Connected to DB and listening on http://localhost:${port}`);
   }
 });
