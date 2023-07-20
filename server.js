@@ -24,7 +24,7 @@ const config = {
 
 app.get('/logout', (req, res) => {
   req.logout(); // This will trigger the logout process
-  res.redirect('/login'); // Redirect the user back to the homepage or another desired page
+  res.redirect('/home'); // Redirect the user back to the homepage or another desired page
 });
 
 app
