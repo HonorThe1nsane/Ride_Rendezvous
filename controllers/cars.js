@@ -48,7 +48,7 @@ exports.findAll = (req, res) => {
 //rest client function
 const getSingleCar = async (req, res) => {
     const userId = new ObjectId(req.params.id);
-    const result = await mongodb.getDb().db().collection('cars').find({ _id: userId });
+    const result = await mongodb.getDb().db('Ride_Rendezvous').collection('cars').find({ _id: userId });
     result.toArray().then((lists) => {
         res.setHeader('Content-Type', 'application/json');
         res.status(200).json(lists[0]);
@@ -89,7 +89,7 @@ const createNewCar = async (req, res) => {
         price: req.body.price
     };
 
-    const response = await mongodb.getDb().db().collection('cars').insertOne(car);
+    const response = await mongodb.getDb().db('Ride_Rendezvous').collection('cars').insertOne(car);
     if (response.acknowledged) {
         res.status(201).json(response);
         console.log("Car added successfully");
@@ -111,7 +111,7 @@ exports.createNewCar = async (req, res) => {
         price: req.body.price
     };
 
-    const response = await mongodb.getDb().db().collection('cars').insertOne(car);
+    const response = await mongodb.getDb().db('Ride_Rendezvous').collection('cars').insertOne(car);
     if (response.acknowledged) {
         res.status(201).json(response, 'Car created successfully');
     } else {
@@ -134,7 +134,7 @@ const updateCar = async (req, res) => {
         year: req.body.year,
         price: req.body.price
     };
-    const response = await mongodb.getDb().db().collection('cars').replaceOne({ _id: userId }, car);
+    const response = await mongodb.getDb().db('Ride_Rendezvous').collection('cars').replaceOne({ _id: userId }, car);
     console.log(response);
     if (response.modifiedCount > 0) {
         res.status(204).send('Car updated successfully');
@@ -173,7 +173,7 @@ exports.update = (req, res) => {
 //Rest client
 const deleteCar = async (req, res) => {
     const userId = new ObjectId(req.params.id);
-    const response = await mongodb.getDb().db().collection('cars').deleteOne({ _id: userId }, true);
+    const response = await mongodb.getDb().db('Ride_Rendezvous').collection('cars').deleteOne({ _id: userId }, true);
     console.log(response);
     if (response.deletedCount > 0) {
         res.status(200).json({message: "car deleted"});

@@ -3,7 +3,6 @@ module.exports = (mongoose) => {
         'persons',
         mongoose.Schema(
             {
-                // googleId: String, eventually we will need to add a googleId to the person
                 firstName: String,
                 lastName: String,
                 email: String,
