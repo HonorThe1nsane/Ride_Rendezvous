@@ -1,5 +1,5 @@
 const db = require("../models/index");
-const personSchema = db.persons;
+const personSchema = db.person;
 
 const getAll = async (req, res) => {
     try {
